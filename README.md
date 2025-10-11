@@ -66,20 +66,13 @@ Zero Trust: The server does not accept authoritative game state from the client.
 ## What’s included in this repo
 
 ```
-/README.md                <- this file
 /Scripts/                 <- Woh
-
-/Server/                  <- server code (authoritative logic, validation)
-  /src
-  /tests
-/Client/                  <- Unity client code (input collection + UI)
-  /Assets/                <- minimal assets or placeholders (assets not required)
-  /Scripts
-/Docs/
-  /demo_instructions.md
-  /threat_model.md
-/demo_video_link.txt      <- link to hosted demo
-/LICENSE
+  /Client-Side/           <- client code (input collection)
+  /Server-Side/           <- server code (input validaton, authoritative logic)
+  /Damageable/            <- health-related code  (demonstration of OOP, interfaces)
+  /Items/                 <- equipment code (demonstration of OOP, interfaces)
+/Cheating-Attempt.mp4     <- anti-cheat demo
+/README.md                <- this file
 ```
 
 > [!NOTE]
@@ -94,9 +87,7 @@ Zero Trust: The server does not accept authoritative game state from the client.
 
 * A recorded cheating attempt (client repeats inputs to move faster) and server response
 
-* Commentary/annotations describing the security design choices
-
-Demo link: <INSERT_YOUR_VIDEO_LINK_HERE>
+<!-- Commentary/annotations describing the security design choices -->
 
 
 ## Limitations & what I’d improve
