@@ -11,7 +11,7 @@ public class HitscanWeapon : GenericItem
     {
         base.OnPrimary(clientID);
 
-        PlayerComponentsManager pcm = NetworkManager.ConnectedClients[clientID].PlayerObject.GetComponent<PlayerComponentsManager>();
+        Player pcm = NetworkManager.ConnectedClients[clientID].PlayerObject.GetComponent<Player>();
         Vector3 start = pcm.transform.position;
         Vector3 dir = pcm.cameraController.transform.forward;
         Vector3 end = start + dir * range;

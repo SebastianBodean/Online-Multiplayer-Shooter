@@ -53,18 +53,11 @@ public class PlayerSpawnManager : NetworkBehaviour
         NetworkManager.OnClientConnectedCallback += ((ulong clientID) =>
         {
             print("A client has connected to the server");
-            PlayerComponentsManager pcm = NetworkManager.ConnectedClients[clientID].PlayerObject.GetComponent<PlayerComponentsManager>();
+            Player pcm = NetworkManager.ConnectedClients[clientID].PlayerObject.GetComponent<Player>();
             
 
             //Initialising the player's health
             pcm.healthManager.maxHealth.Value = playerMaxHealth;
-
-            //Initialising the player's inventory
-            pcm.inventoryManager.selectedSlot.OnValueChanged += ((previousValue, newValue) =>
-            {
-                pcm.inventoryManager.GetItem(previousValue).gameObject.SetActive(false);
-                pcm.inventoryManager.GetItem(newValue).gameObject.SetActive(true);
-            });
 
             ItemDatabase.Singleton.InitialiseInventoryServerRpc(clientID);
 
@@ -76,7 +69,7 @@ public class PlayerSpawnManager : NetworkBehaviour
     /// <summary>
     /// Request to respawn the player
     /// </summary>
-    public void RequestRespawn(PlayerComponentsManager pcm)
+    public void RequestRespawn(Player pcm)
     {
         ulong clientID = pcm.networkObject.OwnerClientId;
         StartCoroutine(QueueRespawn(clientID));
@@ -88,7 +81,7 @@ public class PlayerSpawnManager : NetworkBehaviour
     /// <param name="clientID"></param>
     private void Respawn(ulong clientID)
     {
-        PlayerComponentsManager pcm = NetworkManager.ConnectedClients[clientID].PlayerObject.GetComponent<PlayerComponentsManager>();
+        Player pcm = NetworkManager.ConnectedClients[clientID].PlayerObject.GetComponent<Player>();
 
         Debug.Log(clientID,pcm); 
         pcm.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)];

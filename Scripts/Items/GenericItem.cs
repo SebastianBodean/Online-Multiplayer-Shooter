@@ -42,13 +42,13 @@ public class GenericItem : NetworkBehaviour
     public virtual void OnSecondaryDown(ulong clientID) 
     {
         print("Working");
-        GetComponentInParent<PlayerComponentsManager>().cameraController.ZoomCameraRpc(20);
+        GetComponentInParent<Player>().cameraController.ZoomCameraRpc(20);
     }
 
     public virtual void OnSecondaryHold(ulong clientID) { }
 
     public virtual void OnSecondaryUp(ulong clientID)
     {
-        GetComponentInParent<PlayerComponentsManager>().cameraController.ZoomCameraRpc(-20);
+        GetComponentInParent<Player>().cameraController.ZoomCameraRpc(-20);
     }
 }
